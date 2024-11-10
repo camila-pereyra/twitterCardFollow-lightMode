@@ -1,6 +1,13 @@
+import { useState } from "react"
 import "./TwitterFollowCard.css"
 
 const TwitterFollowCard = ({name,count,img}) => {
+  const [clicked,setClicked]=useState(false)
+
+  const handleCliked = ()=>{
+    setClicked(!clicked)    
+  }
+
   return (
     <article className="tw-followCard">
       <header className="tw-followCard-header">
@@ -13,7 +20,7 @@ const TwitterFollowCard = ({name,count,img}) => {
         </div>
       </header>
       <aside className="tw-followCard-aside">
-        <button className="tw-followCard-button">Follow</button>
+        <button className={!clicked?"tw-followCard-buttonFollow":"tw-followCard-buttonFollowing"} onClick={handleCliked}>{clicked ?  "Following": "Follow"}</button>
       </aside>
     </article>
   )
